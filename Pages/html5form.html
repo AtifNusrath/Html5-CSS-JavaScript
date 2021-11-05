@@ -16,36 +16,36 @@
         </header>
         <div>
             <label for="text">User Name:</label>
-            <input type="text" id="text" name="text" required>
+            <input type="text" id="text" name="text" placeholder="Enter Username" required/>
             <error-output class="text-error"></error-output>
 
         </div>
         <div>
             <label for="pwd">Password:</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" placeholder="Password" title="Password must contain: Minimum 8 characters atleast 1 Alphabet and 1 Number"/>
             <error-output class="password-error"></error-output>
         </div>
         <div>
             <label for="email">Email ID:</label>
-            <input type="email" id="email" name="email">
+            <input type="email" id="email" name="email" placeholder="Email" required/>
             <error-output class="email-error"></error-output>
         </div>
         <div>
             <label for="url">URL:</label>
-            <input type="url" id="url" name="url">
+            <input type="url" id="url" name="url"placeholder="Enter URL" >
         </div>
         <div>
             <label for="number">Number:</label>
-            <input type="number" id="number" name="number">
+            <input type="number" id="number" name="number" placeholder="Enter Mobile Number" >
             <error-output class="number-error"></error-output>
         </div>
         <div>
             <label for="tel">TelePhone Number:</label>
-            <input type="tel" id="tel" name="tel">
+            <input type="tel" id="tel" name="tel" placeholder="Enter telephone Number" >
         </div>
         <div>
             <label for="search"> Search..</label>
-            <input type="seatch" id="search" name="search">
+            <input type="seatch" id="search" name="search" placeholder="Enter Search Word" >
         </div>
         <div class="nativeDatePicker">
             <label for="date">Date:</label>
@@ -100,6 +100,25 @@
                 telephoneError.textContent = "Enter Country code followed by space and 10 digit number";
             }
         });
+
+        const password = document.querySelector('#password');
+        const passwordError = document.querySelector('.password-error');
+        password.addEventListener('input', function() {
+            let passwordRegex = RegExp("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*d)(?=.*[@#$%^&-+=()]).{8,}$");
+            if (passwordRegex.test(password.value)) {
+                passwordError.textContent = "";
+            } else {
+                passwordError.textContent = "Password Incorrect";
+            }
+        });
+
+        let salary = document.querySelector('#salary');
+        let output = document.querySelector('.salary-output');
+        output.textContent = salary.value;
+        salary.addEventListener('input', function() {
+            output.textContent = salary.value;
+        });
+
 
         function save() {
             alert(" Form created Successfully");
