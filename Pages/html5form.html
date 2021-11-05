@@ -15,7 +15,7 @@
             <h1>HTML 5 Input Feilds </h1>
         </header>
         <div>
-            <label for="text">NAME:</label>
+            <label for="text">User Name:</label>
             <input type="text" id="text" name="text" required>
             <error-output class="text-error"></error-output>
 
@@ -66,7 +66,7 @@
         let textError = document.querySelector('.text-error');
 
         text.addEventListener('input', function() {
-            let nameRegex = RegExp('^[A-Z]{1}[a-z]{2,}$');
+            let nameRegex = RegExp('^[A-Z]{1}[a-z]{3,}$');
             if (nameRegex.test(text.value)) {
                 textError.textContent = "";
             } else {
@@ -75,8 +75,23 @@
             }
 
         });
+
+        let email = document.querySelector('#email');
+        let emailError = document.querySelector('.email-error');
+        email.addEventListener('input', function() {
+            let emailRegex = RegExp("^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$");
+
+            if (emailRegex.test(email.value)) {
+                emailError.textContent = "";
+            } else {
+                emailError.textContent = " Email is Incorrect";
+
+            }
+
+        });
+
         function save() {
-            alert(" FOrm created Successfully");
+            alert(" Form created Successfully");
         }
     </script>
 </body>
